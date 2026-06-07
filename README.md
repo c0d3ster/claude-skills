@@ -26,6 +26,13 @@ Creates a pull request, automatically chaining `/branch` and `/commit` as needed
 2. If there are uncommitted changes, calls `/commit` first
 3. Pushes the branch and opens a PR via `gh pr create`
 
+### `/merge`
+Squash merges the current branch's PR into main, then cleans up.
+
+1. Confirms an open PR exists and prompts for confirmation
+2. Squash merges via `gh pr merge --squash --delete-branch`
+3. Switches to `main`, pulls latest, and deletes the local branch
+
 ## Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and running
@@ -42,7 +49,7 @@ bash install.sh
 
 This symlinks each skill directory into `~/.claude/skills/` so Claude Code can discover and invoke them.
 
-> **Windows note:** `ln -s` requires Developer Mode enabled or an elevated terminal. To enable it: Settings > System > For Developers > Developer Mode. Alternatively, run the terminal as Administrator.
+> **Git Bash on Windows:** Enable Developer Mode (Settings > System > For developers > Developer Mode). Git Bash also needs `MSYS=winsymlinks:nativestrict` for `ln -s` to create real symlinks instead of copying directories — `install.sh` sets this automatically. If you previously ran install and got copies, remove them first: `rm -rf ~/.claude/skills/{branch,commit,merge,pr}` then re-run `bash install.sh`.
 
 ## Usage
 
@@ -52,4 +59,5 @@ Open Claude Code inside any git repo and invoke a skill by name:
 /branch
 /commit
 /pr
+/merge
 ```
