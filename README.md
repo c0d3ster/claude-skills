@@ -26,28 +26,30 @@ Creates a pull request, automatically chaining `/branch` and `/commit` as needed
 2. If there are uncommitted changes, calls `/commit` first
 3. Pushes the branch and opens a PR via `gh pr create`
 
+## Prerequisites
+
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and running
+- [GitHub CLI (`gh`)](https://cli.github.com/) installed and authenticated (`gh auth login`) — required by `/pr`
+- Git configured with a remote
+
 ## Installation
 
-Run the install script to symlink all skills into `~/.claude/skills/`:
+Clone this repo, then run the install script:
 
 ```bash
 bash install.sh
 ```
 
-This creates a symlink for each skill directory in this repo under `~/.claude/skills/`, so Claude Code can discover and invoke them.
+This symlinks each skill directory into `~/.claude/skills/` so Claude Code can discover and invoke them.
 
-## Structure
+> **Windows note:** `ln -s` requires Developer Mode enabled or an elevated terminal. To enable it: Settings > System > For Developers > Developer Mode. Alternatively, run the terminal as Administrator.
+
+## Usage
+
+Open Claude Code inside any git repo and invoke a skill by name:
 
 ```
-claude-skills/
-├── skills/
-│   ├── branch/
-│   │   └── SKILL.md
-│   ├── commit/
-│   │   └── SKILL.md
-│   └── pr/
-│       └── SKILL.md
-├── install.sh
-├── plugin.json
-└── README.md
+/branch
+/commit
+/pr
 ```
