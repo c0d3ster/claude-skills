@@ -16,7 +16,4 @@ Squash merge the current branch into main. Run these steps in order:
 
 4. **Switch to main and pull**: Run `git checkout main && git pull`.
 
-5. **Delete local branch**: Run `git branch -d <branch-name>` using the branch name from step 1.
-   - If it fails (unmerged warning), use `-D` since the squash merge won't be detected by git.
-
-6. **Report success**: show the branch that was merged and confirm the user is now on a clean, up-to-date `main`.
+5. **Report success**: show the branch that was merged and confirm the user is now on a clean, up-to-date `main`.
