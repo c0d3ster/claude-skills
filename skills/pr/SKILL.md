@@ -1,7 +1,7 @@
 ---
 description: Create a pull request, branching and committing first if needed
 disable-model-invocation: true
-allowed-tools: Bash(git * gh *)
+allowed-tools: Bash(git * gh *) Skill(branch commit)
 ---
 
 Create a pull request. Run these steps in order:
