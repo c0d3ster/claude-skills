@@ -1,6 +1,6 @@
 ---
 description: Stage and commit changes using Angular commit format
-allowed-tools: Bash(git *)
+allowed-tools: Bash(git *) Skill(branch)
 ---
 
 Create a git commit following Angular commit format: `type(scope): subject`
@@ -12,7 +12,8 @@ Create a git commit following Angular commit format: `type(scope): subject`
 - Add a body for breaking changes or non-obvious context
 
 **Steps:**
-1. `git status` to see what changed
-2. `git diff` to understand the changes
-3. Stage relevant files
-4. Commit with the formatted message
+1. Run `git branch --show-current`. If on `main` or `master`, use the Skill tool to invoke the `branch` skill before continuing.
+2. `git status` to see what changed
+3. `git diff` to understand the changes
+4. Stage relevant files
+5. Commit with the formatted message
