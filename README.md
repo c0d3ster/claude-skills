@@ -33,6 +33,9 @@ Squash merges the current branch's PR into main, then cleans up.
 2. Squash merges via `gh pr merge --squash --delete-branch`
 3. Switches to `main`, pulls latest, and deletes the local branch
 
+### `/complete`
+Closes out the current session. Makes no further edits or tool calls, and replies with a single `result:` line, which is what marks a background session as completed on the agent dashboard.
+
 ## Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and running
