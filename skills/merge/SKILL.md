@@ -19,6 +19,7 @@ Rebase-merge the current branch into main. Run these steps in order:
 
 5. **Retarget stacked PRs**: For each PR number from step 3, run `gh pr edit <number> --base <base>`.
    - This must happen before step 6. `gh pr merge --delete-branch` deletes the branch through the API, which closes dependent PRs rather than retargeting them.
+   - If any retarget fails, stop. Do not run step 6, and tell the user which PRs still target `<branch>` so they can fix it first.
 
 6. **Delete the remote branch**: Run `git push origin --delete <branch>`.
 
