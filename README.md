@@ -27,11 +27,15 @@ Creates a pull request, automatically chaining `/branch` and `/commit` as needed
 3. Pushes the branch and opens a PR via `gh pr create`
 
 ### `/merge`
-Squash merges the current branch's PR into main, then cleans up.
+Rebase-merges the current branch's PR, retargets any PRs stacked on it, then cleans up.
 
-1. Confirms an open PR exists and prompts for confirmation
-2. Squash merges via `gh pr merge --squash --delete-branch`
-3. Switches to `main`, pulls latest, and deletes the local branch
+1. Stops if on `main`/`master` or if there are uncommitted changes
+2. Lists open PRs stacked on this branch (their base is this branch)
+3. Rebase merges via `gh pr merge --rebase` (no `--delete-branch`)
+4. Retargets each stacked PR to this PR's base with `gh pr edit --base`
+5. Deletes the remote branch, then switches to the base branch and pulls
+
+Retargeting happens before the branch is deleted because `gh pr merge --delete-branch` removes the branch via the API, which closes stacked PRs instead of retargeting them.
 
 ### `/complete`
 Closes out the current session. Makes no further edits or tool calls, and replies with a single `result:` line, which is what marks a background session as completed on the agent dashboard.
